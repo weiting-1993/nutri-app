@@ -40,7 +40,7 @@ Limits: the computer must be running `pnpm expo start` whenever the app is opene
    pnpm dlx eas-cli@latest build --platform android --profile preview
    ```
    The first run asks to create the project and a signing key — accept (EAS stores the key).
-2. When the cloud build finishes (~10–20 min), open the printed link on the Android phone, download the APK, and allow "install unknown apps" when prompted.
+2. When the cloud build finishes (~10–20 min), open the printed link on the Android phone, download the APK (about 140 MB, so use Wi-Fi), and allow "install unknown apps" when prompted.
 
 The installed app runs on its own: code and food database are inside the APK, your data is on the phone, so the computer is only needed to build new versions (barcode lookup and AI still need internet). Code changes reach the phone only through a new build.
 
@@ -89,7 +89,7 @@ Moving to a new phone or from Expo Go to an installed build: Export on the old o
 ## 4. Optional AI assistant
 
 1. Deploy the server once: follow [server/README.md](server/README.md) (Cloudflare account + Gemini API key; the free tier works for trying it, the paid tier keeps your data out of training; expected paid cost roughly 1–3 €/month for two people, hard-capped by rate limits).
-2. On each phone: **Profile → AI assistant**, enter the server URL and that phone's device token → **Test connection**.
+2. On each phone: **Profile → Set up AI** (later: **AI settings**), enter the server URL and that phone's device token → **Test connection**.
 3. Use **✨ AI** in the diary. For each food the AI suggests an amount and its own nutrient estimate (energy, macros, fibre, sugars, saturated fat, sodium); you can swap in a lab-measured database match instead, which also brings vitamins and minerals. Set the amount you ate with the ½ × / 1 × / 1½ × / 2 × buttons (multiples of the AI's portion guess) or type grams; the kcal/macros for that amount update live. Results are always shown for confirmation before anything is logged.
 
 Privacy: only what you type, photos you pick (downscaled, no location metadata) and aggregated nutrient averages are sent. Never name, age or weight. Remove the setup to turn AI off; everything else works without it.
