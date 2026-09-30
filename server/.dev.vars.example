@@ -1,0 +1,4 @@
+# Copy to .dev.vars for `npm run dev` (local only; .dev.vars is gitignored).
+GEMINI_API_KEY=replace-with-your-gemini-api-key
+# Comma-separated SHA-256 hex hashes printed by `npm run gen-token`.
+DEVICE_TOKEN_HASHES=0000000000000000000000000000000000000000000000000000000000000000,1111111111111111111111111111111111111111111111111111111111111111

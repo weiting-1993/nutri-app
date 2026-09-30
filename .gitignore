@@ -26,12 +26,18 @@ npm-debug.*
 yarn-debug.*
 yarn-error.*
 
-# macOS
+# macOS / editors
 .DS_Store
+.idea/
 *.pem
 
-# local env files
+# local env files / secrets
+.env
 .env*.local
+.dev.vars
+
+# raw food datasets (large; re-download per README)
+data-raw/
 
 # typescript
 *.tsbuildinfo

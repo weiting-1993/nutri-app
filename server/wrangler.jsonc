@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nutri-ai",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-29",
+  // Only the *.workers.dev URL is exposed; no custom routes.
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true },
+
+  // Non-secret configuration.
+  "vars": {
+    "GEMINI_MODEL": "gemini-3.8-flash",
+    // Retried once with this model when GEMINI_MODEL answers "overloaded". "" = retry the same model.
+    "GEMINI_FALLBACK_MODEL": "gemini-3.5-flash-lite",
+    // "LOW" | "MEDIUM" | "HIGH" (Gemini 3+). Set to "" for models without thinking levels.
+    "GEMINI_THINKING_LEVEL": "LOW",
+    // Empty = model default. Google recommends the default (1.0) for Gemini 3 models.
+    "GEMINI_TEMPERATURE": "",
+    // Per phone. A heavy logging day is ~15 requests; these cap the worst-case Gemini bill.
+    "RATE_LIMIT_HOURLY": "20",
+    "RATE_LIMIT_DAILY": "40"
+  },
+
+  // Secrets (NEVER put values here). Set them with:
+  //   pnpm wrangler secret put GEMINI_API_KEY
+  //   pnpm wrangler secret put DEVICE_TOKEN_HASHES   (comma-separated SHA-256 hex hashes)
+
+  "durable_objects": {
+    "bindings": [{ "name": "RATE_LIMITER", "class_name": "RateLimiter" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RateLimiter"] }]
+}

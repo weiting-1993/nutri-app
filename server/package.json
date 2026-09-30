@@ -1,0 +1,25 @@
+{
+  "name": "nutri-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Authenticated AI proxy (Cloudflare Worker) for the nutrition tracking app",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "gen-token": "node scripts/gen-token.mjs"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260929.1",
+    "@types/node": "26.6.3",
+    "typescript": "7.0.2",
+    "vitest": "5.0.2",
+    "wrangler": "4.143.1"
+  },
+  "packageManager": "pnpm@10.23.0"
+}
